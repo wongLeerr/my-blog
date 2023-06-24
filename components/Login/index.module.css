@@ -1,0 +1,99 @@
+.loginArea {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.loginArea .loginBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 320px;
+  height: 350px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.loginArea .loginBox .loginTitle {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 85px;
+  margin-bottom: 23px;
+}
+
+.loginArea .loginBox .loginTitle .closeBtn {
+  margin-left: 80px;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.loginArea .loginBox input {
+  width: 100%;
+  height: 37px;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #888;
+  outline: none;
+}
+
+.loginArea .loginBox input:focus {
+  border: 1px solid #1e80ff;
+}
+
+.loginArea .loginBox .verifyCodeArea {
+  position: relative;
+  cursor: pointer;
+}
+
+.loginArea .loginBox .verifyCodeArea .getVerifyCode {
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  color: #1e80ff;
+  font-size: 14px;
+}
+
+.loginArea .loginBox .loginBtn {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 6px;
+  color: #fff;
+  text-align: center;
+  background-color: #1e80ff;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.loginArea .loginBox .otherLogin {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #1e80ff;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.loginArea .loginBox .otherLogin .github {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+.loginArea .loginBox .loginPrivacy {
+  color: #333;
+  margin-top: 20px;
+  margin-left: 8px;
+}

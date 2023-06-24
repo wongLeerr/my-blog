@@ -8,9 +8,9 @@
 
     .logoArea {
         overflow: hidden;
-        width: 150px;
+        width: 60px;
         height: 60px;
-        border-radius: 5px;
+        border-radius: 20px;
         cursor: pointer;
         .logo {
             width: 100%;
@@ -29,5 +29,10 @@
         }
     }
 
-    
+    .operationArea {
+        margin-left: 150px;
+        button {
+            margin-right: 20px;
+        }
+    }
 }

@@ -9,9 +9,9 @@
 
 .navbar .logoArea {
   overflow: hidden;
-  width: 150px;
+  width: 60px;
   height: 60px;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
 }
 
@@ -28,4 +28,12 @@
 
 .navbar .linkArea .active {
   color: #1890ff;
+}
+
+.navbar .operationArea {
+  margin-left: 150px;
+}
+
+.navbar .operationArea button {
+  margin-right: 20px;
 }

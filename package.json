@@ -10,13 +10,22 @@
   },
   "dependencies": {
     "antd": "^4.24.10",
+    "axios": "^1.4.0",
+    "date-fns": "^2.30.0",
+    "iron-session": "^6.3.1",
+    "js-base64": "^3.7.5",
+    "md5": "^2.3.0",
     "mockjs": "^1.1.0",
+    "mysql2": "^3.4.1",
     "next": "13.4.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "^1.63.6"
+    "reflect-metadata": "^0.1.13",
+    "sass": "^1.63.6",
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
+    "@types/md5": "^2.3.2",
     "@types/mockjs": "^1.0.7",
     "@types/node": "20.3.1",
     "@types/react": "18.2.13",

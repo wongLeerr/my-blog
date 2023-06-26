@@ -1,8 +1,10 @@
 import styles from './index.module.scss'
 import Image from 'next/image';
 import { useState } from 'react'
+import {message}  from 'antd'
 import github from './images/github.png'
 import CountDown from 'components/CountDown'
+import request from 'service/fetch';
 
 interface IProps {
     isShow: boolean;
@@ -25,12 +27,41 @@ const Login = ({ isShow, onClose }: IProps) => {
 
     // 获取验证码
     const handleGetVerifyCode = () => {
-        setForm
-        setIsShowVerifyCode(true)
+        // 若用户未填写手机号就点击获取验证码
+        if (!form?.phone) {
+            message.warning("请输入手机号")
+            return 
+        }   
+
+        request.post("/api/user/sendVerifyCode", {
+            to: form?.phone,
+            appId:"2c94811c88bf35030188ec8788e90c18",
+            templateId: 1,
+        }).then((res:any) => {
+            if (res.code === 0) {
+             setIsShowVerifyCode(true)
+            } else {
+                message.error(res.msg || "未知错误")
+          }
+        })
     }
 
     // 登录
-    const handleLogin = () => { }
+    const handleLogin = () => {
+        request.post("/api/user/login", {
+            ...form
+        }).then((res:any) => {
+            if (res?.code === 0) {
+                // 登录成功
+                // ...
+                onClose && onClose()
+            } else {
+                message.error(res?.msg || "未知错误")
+            }
+        }, (error) => {
+            message.error(error)
+        })
+     }
     
     // github 登录 (基于OAuth2.0协议)
     const handleOtherLogin = () => { }

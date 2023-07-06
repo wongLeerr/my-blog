@@ -20,7 +20,7 @@ async function sendVerifyCode(req: NextApiRequest, res: NextApiResponse) {
     const nowDate = format(new Date(), "yyyyMMddHHmmss")
     // 求助于md5库实现md5加密
     const SigParameter = md5(`${AccountId}${AuthToken}${nowDate}`).toUpperCase()
-    console.log(SigParameter)
+    // console.log(SigParameter)
     const Authorization = encode(`${AccountId}:${nowDate}`)
     // 构造验证码和过期时间
     const verifyCode = Math.floor(Math.random() * (9999 - 1000)) + 1000  // 生成 1000-9999的四位整数

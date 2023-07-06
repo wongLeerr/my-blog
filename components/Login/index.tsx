@@ -5,6 +5,8 @@ import {message}  from 'antd'
 import github from './images/github.png'
 import CountDown from 'components/CountDown'
 import request from 'service/fetch';
+import { useStore } from 'store'
+import { observer } from 'mobx-react-lite';
 
 interface IProps {
     isShow: boolean;
@@ -12,6 +14,9 @@ interface IProps {
 }
 
 const Login = ({ isShow, onClose }: IProps) => {
+
+    const store = useStore()
+    console.log(store)
 
     const [form, setForm] = useState({
         phone: '',
@@ -49,11 +54,15 @@ const Login = ({ isShow, onClose }: IProps) => {
     // 登录
     const handleLogin = () => {
         request.post("/api/user/login", {
-            ...form
+            // 用户输入的手机号和验证码以及验证类型为手机 这些信息带给后端
+            ...form,
+            identity_type:'phone'
         }).then((res:any) => {
             if (res?.code === 0) {
                 // 登录成功
-                // ...
+                message.success("登录成功")
+                // 将信息存储至store中
+                store.user.setUserInfo(res?.data)
                 onClose && onClose()
             } else {
                 message.error(res?.msg || "未知错误")
@@ -74,6 +83,14 @@ const Login = ({ isShow, onClose }: IProps) => {
             [name]:value
         })
     }
+    // 输入验证码回车
+    const handleKeyUp = (e:any) => {
+        // 判定为回车
+        if (e.keyCode === 13) {
+            // 执行登录操作
+            handleLogin()
+        }
+    }
 
     // 倒计时组件触发关闭的回调
     const handleCountDownEnd = () => {
@@ -91,7 +108,7 @@ const Login = ({ isShow, onClose }: IProps) => {
                         </div>
                         <input name='phone' value={form.phone} type="text" placeholder='请输入手机号' onChange={handleFormChange} />
                         <section className={styles.verifyCodeArea}>
-                            <input name='verify' value={form.verify} type="text" placeholder='请输入验证码' onChange={handleFormChange} />
+                            <input name='verify' value={form.verify} type="text" placeholder='请输入验证码' onKeyUp={handleKeyUp} onChange={handleFormChange} />
                             {/* 根据falg决定显示倒计时组件还是获取验证码按钮 */}
                             <span className={styles.getVerifyCode} onClick={handleGetVerifyCode}>
                                 {
@@ -108,4 +125,4 @@ const Login = ({ isShow, onClose }: IProps) => {
     )
 }
 
-export default Login
+export default observer(Login) 

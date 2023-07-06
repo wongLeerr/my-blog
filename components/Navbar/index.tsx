@@ -5,18 +5,34 @@ import Link from 'next/link'
 import styles from './index.module.scss'
 import { navs } from './config'
 import logo from './images/logo.png'
-import { Button } from 'antd'
+import { Button, Dropdown, Avatar, message } from 'antd'
+import type { MenuProps } from 'antd';
+import {HomeOutlined,LoginOutlined} from '@ant-design/icons'
 import Login from 'components/Login'
-import {useState} from 'react'
+import { useState } from 'react'
+import { useStore } from 'store'
+import request from 'service/fetch'
+import { observer } from 'mobx-react-lite'
 
 const NavBar: NextPage = () => {
     
-    const { pathname } = useRouter()
+    const store = useStore()
+    const { userId, avatar } = store.user.userInfo
+    console.log("userId:",userId)
+    
+    const { pathname , push } = useRouter()
     const [isShowLogin,setIsShowLogin] = useState(false)
     
     // 去写文章
     const goWrite = () => {
-       
+        console.log("当前的useId为:",userId)
+         // 未登录
+         if (!userId || userId == -1) {
+            message.warning("不登录还想写文章撒~")
+         } else {
+            // 跳转至写文章页
+            push('/editor/new')
+        } 
     }
 
     // 去登录
@@ -31,7 +47,49 @@ const NavBar: NextPage = () => {
         setIsShowLogin(false)
         
     }
+    // 去个人主页
+    const handleGotoPersonalPage = () => {
+        // 每个用户都有自己的独特的主页撒
+        push(`/user/${userId}`)
+    }
 
+    // 退出登录
+    const handleLogout = () => {
+        request.post("/api/user/logout", {})
+            .then((res: any) => {
+                // 调用退出登录的接口成功
+                if (res?.code === 0) {
+                    // 置空仓库中关于用户相关信息
+                    store.user.setUserInfo({
+                        userId: -1,
+                        introduce: '',
+                        avatar: '',
+                        nickname:''
+                    })
+                    message.success("已退出登录")
+                }
+            }, (err) => {
+                message.error(err || "未知错误")
+            }
+        )
+    }
+
+    // 定义鼠标悬浮头像时弹出的下拉框选项
+    const items: MenuProps['items'] = [
+        {
+          key: '1',
+          label: (
+           <div onClick={handleGotoPersonalPage}> <HomeOutlined />  个人主页</div>
+          ),
+        },
+        {
+          key: '2',
+          label: (
+            <div onClick={handleLogout}> <LoginOutlined />  退出登录</div>
+          ),
+        },
+    ];
+    
     return (
         // 总导航区域
         <div className={styles.navbar}>
@@ -55,7 +113,16 @@ const NavBar: NextPage = () => {
             {/* 写文章、登录按钮 */}
             <section className={styles.operationArea}>
                 <Button onClick={goWrite}>写文章</Button>
-                <Button type='primary' onClick={goLogin}>登录</Button>
+                {
+                    userId!=-1 ? (
+                        <>
+                            <Dropdown menu={{items}} placement='bottomLeft'>
+                                <Avatar src={avatar} size={32} />
+                            </Dropdown>
+                        </>
+                    ):( <Button type='primary' onClick={goLogin}>登录</Button>)
+                }
+               
             </section>
             {/* 登录弹框组件 */}
             <Login isShow={isShowLogin} onClose = {handleClose} />
@@ -64,4 +131,5 @@ const NavBar: NextPage = () => {
     
 }
 
-export default NavBar
+// 使用observer将组件包裹起来，使得该组件拥有响应式的能力（store中数据变化，立即响应到UI上）
+export default observer(NavBar)

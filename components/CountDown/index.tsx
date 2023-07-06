@@ -9,7 +9,7 @@ interface IProp {
 const CountDown = ({ time, onEnd }: IProp) => {
    const [count,setCount] = useState(time || 60)
     useEffect(() => {
-        console.log("启用定时器")
+        // console.log("启用定时器")
        const timer =  setInterval(() => {
             setCount((count) => {
                 if (count == 1) {

@@ -1,0 +1,16 @@
+.container {
+    margin:0 auto;
+
+    .operation {
+        margin-bottom: 1px;
+        display:flex;
+        justify-content: space-between;
+        .title {
+            width: 95%;
+        }
+
+        .button {
+            flex: 1;
+        }
+    }
+}

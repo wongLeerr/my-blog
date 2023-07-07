@@ -1,6 +1,6 @@
 // 此文件为配置连接数据库和配置以js方式操作数据库的文件
 import "reflect-metadata" 
-import {User,UserAuth} from './entity/index'
+import {User,UserAuth,Article} from './entity/index'
 const host = process.env.DATABASE_HOST
 const port = Number(process.env.DATABASE_PORT)
 const username = process.env.DATABASE_USERNAME
@@ -30,7 +30,7 @@ export const prepareConnection = () => {
                 password,
                 database,
                 // 数据库和typeorm库的映射关系，entity文件夹中每一个ts文件代表数据库中的每一个表
-                entities: [User,UserAuth],
+                entities: [User,UserAuth,Article],
                 synchronize: false,
                 logging:true
             })

@@ -16,7 +16,7 @@ interface IProps {
 const Login = ({ isShow, onClose }: IProps) => {
 
     const store = useStore()
-    console.log(store)
+    // console.log(store)
 
     const [form, setForm] = useState({
         phone: '',

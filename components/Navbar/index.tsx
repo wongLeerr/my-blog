@@ -18,14 +18,14 @@ const NavBar: NextPage = () => {
     
     const store = useStore()
     const { userId, avatar } = store.user.userInfo
-    console.log("userId:",userId)
+    // console.log("userId:",userId)
     
     const { pathname , push } = useRouter()
     const [isShowLogin,setIsShowLogin] = useState(false)
     
     // 去写文章
     const goWrite = () => {
-        console.log("当前的useId为:",userId)
+        // console.log("当前的useId为:",userId)
          // 未登录
          if (!userId || userId == -1) {
             message.warning("不登录还想写文章撒~")
@@ -114,13 +114,15 @@ const NavBar: NextPage = () => {
             <section className={styles.operationArea}>
                 <Button onClick={goWrite}>写文章</Button>
                 {
-                    userId!=-1 ? (
+                    !userId || userId == -1 ? (
+                        ( <Button type='primary' onClick={goLogin}>登录</Button>)
+                       
+                    ) : (
                         <>
-                            <Dropdown menu={{items}} placement='bottomLeft'>
-                                <Avatar src={avatar} size={32} />
-                            </Dropdown>
-                        </>
-                    ):( <Button type='primary' onClick={goLogin}>登录</Button>)
+                        <Dropdown menu={{items}} placement='bottomLeft'>
+                            <Avatar src={avatar} size={32} />
+                        </Dropdown>
+                        </>)
                 }
                
             </section>

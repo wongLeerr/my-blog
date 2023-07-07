@@ -6,17 +6,29 @@ import { ChangeEvent, useState } from "react";
 import { Input , Button , message} from 'antd'
 import styles from './index.module.scss'
 import request from 'service/fetch';
+import { observer } from 'mobx-react-lite'
+import { useStore } from 'store'
+import { useRouter } from 'next/router'
+
 
 // 创建一个MD编辑器
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 
 const NewEditor = () => {
 
+    const router = useRouter()
+    const { push } = router
+
     // 文章标题
     const [title,setTitle] = useState("")
 
     // value即为输入的值，当在编辑器中输入内容的时候，动态执行setValue实现MD效果
-    const [content,setContent] = useState("")
+    const [content, setContent] = useState("")
+    
+    // 创建 store
+    const store = useStore()
+    // 获取userId
+    const {userId} = store.user.userInfo 
 
     // 发布
     const handlePublish = () => {
@@ -33,7 +45,9 @@ const NewEditor = () => {
             if (res.code === 0) {
                 // 发布成功
                 message.success("发布成功")
-                // ...
+                // 跳转至个人信息页
+                // console.log("发布成功的userId:",userId)
+                userId ? push(`/user/${userId}`) : push(`/`)
             } else {
                 message.error(res?.msg || "发布失败!")
             }
@@ -71,4 +85,4 @@ const NewEditor = () => {
 // NewEditor本质上是一个函数，因此也是一个对象，其身上可以挂载layout属性，实现是否展示页头页脚
 (NewEditor as any).layout = null
 
-export default NewEditor
+export default observer(NewEditor) 

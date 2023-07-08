@@ -3,3 +3,14 @@
 body {
     background-color: #f2f3f5;
 }
+
+.content-layout {
+    width: 1080px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+}
+
+a {
+    color: #000 !important;
+}

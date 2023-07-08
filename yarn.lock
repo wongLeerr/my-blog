@@ -3244,6 +3244,11 @@
   dependencies:
     "p-locate" "^5.0.0"
 
+"lodash.escape@^4.0.1":
+  "integrity" "sha512-nXEOnb/jK9g0DYMr1/Xvq6l5xMD7GDG55+GSYIYmS0G4tBk/hURD4JR9WCavs04t33WmJx9kCyp9vJ+mr4BOUw=="
+  "resolved" "https://registry.npmmirror.com/lodash.escape/-/lodash.escape-4.0.1.tgz"
+  "version" "4.0.1"
+
 "lodash.merge@^4.6.2":
   "integrity" "sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ=="
   "resolved" "https://registry.npmmirror.com/lodash.merge/-/lodash.merge-4.6.2.tgz"
@@ -3253,6 +3258,11 @@
   "integrity" "sha512-jttmRe7bRse52OsWIMDLaXxWqRAmtIUccAQ3garviCqJjafXOfNMO0yMfNpdD6zbGaTU0P5Nz7e7gAT6cKmJRw=="
   "resolved" "https://registry.npmmirror.com/lodash.truncate/-/lodash.truncate-4.4.2.tgz"
   "version" "4.4.2"
+
+"lodash.unescape@^4.0.1":
+  "integrity" "sha512-DhhGRshNS1aX6s5YdBE3njCCouPgnG29ebyHvImlZzXZf2SHgt+J08DHgytTPnpywNbO1Y8mNUFyQuIDBq2JZg=="
+  "resolved" "https://registry.npmmirror.com/lodash.unescape/-/lodash.unescape-4.0.1.tgz"
+  "version" "4.0.1"
 
 "lodash@^4.17.21":
   "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
@@ -3316,6 +3326,20 @@
   "integrity" "sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw=="
   "resolved" "https://registry.npmmirror.com/markdown-table/-/markdown-table-3.0.3.tgz"
   "version" "3.0.3"
+
+"markdown-to-txt@^2.0.1":
+  "integrity" "sha512-Hsj7KTN8k1gutlLum3vosHwVZGnv8/cbYKWVkUyo/D1rzOYddbDesILebRfOsaVfjIBJank/AVOySBlHAYqfZw=="
+  "resolved" "https://registry.npmmirror.com/markdown-to-txt/-/markdown-to-txt-2.0.1.tgz"
+  "version" "2.0.1"
+  dependencies:
+    "lodash.escape" "^4.0.1"
+    "lodash.unescape" "^4.0.1"
+    "marked" "^4.0.14"
+
+"marked@^4.0.14":
+  "integrity" "sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A=="
+  "resolved" "https://registry.npmmirror.com/marked/-/marked-4.3.0.tgz"
+  "version" "4.3.0"
 
 "mathml-tag-names@^2.1.3":
   "integrity" "sha512-APMBEanjybaPzUrfqU0IMU5I0AswKMH7k8OTLs0vvV4KZpExkTkY87nR/zpbuTPj+gARop7aGUbl11pnDfW6xg=="

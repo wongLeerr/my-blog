@@ -3,6 +3,7 @@ import { prepareConnection } from 'db/index'
 import { Article } from 'db/entity'
 import ListItem from 'components/ListItem'
 import { IArticle } from './api'
+import { Divider } from 'antd'
 
 
 
@@ -37,13 +38,16 @@ const Home = (props: IProps) => {
   console.log("articles:",articles)
 
   return (
-    <>
+    <div className='content-layout'>
       {
         articles.map((article) => {
-          return <ListItem article={article} key={article.id} />
+          return <div key={article.id}>
+            <ListItem article={article}  />
+            <Divider />
+          </div>
         })
       }
-    </>
+    </div>
   )
 }
 

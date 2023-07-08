@@ -1,6 +1,7 @@
 // 此文件为操纵数据库中users表的文件
-import { Entity, BaseEntity,ManyToOne ,PrimaryGeneratedColumn, JoinColumn ,Column } from 'typeorm'
-import  {User }  from './users'
+import { Entity, BaseEntity,ManyToOne ,PrimaryGeneratedColumn, JoinColumn ,Column, OneToMany } from 'typeorm'
+import { User } from './users'
+import { Comment } from './comment';
 
 @Entity({ name: 'articles' })
 
@@ -28,7 +29,9 @@ export class Article extends BaseEntity{
 
     @ManyToOne(() => User)
     @JoinColumn({ name: 'user_id' })
-    user!:User
-
+    user!: User
+    
+    @OneToMany(() => Comment, (comment) => comment.article)
+    comments!:Comment[]
 
 }

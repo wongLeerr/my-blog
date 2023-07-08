@@ -19,6 +19,14 @@ export const EXCEPTION_ARTICLE = {
     },
 }
 
+// 评论管理
+export const EXCEPTION_COMMENT= {
+    PUBLISH_FAILED: {
+        code: 2001,
+        msg:'发布评论失败'
+    },
+}
+
 
 
 

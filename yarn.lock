@@ -3327,6 +3327,11 @@
   "resolved" "https://registry.npmmirror.com/markdown-table/-/markdown-table-3.0.3.tgz"
   "version" "3.0.3"
 
+"markdown-to-jsx@^7.2.1":
+  "integrity" "sha512-9HrdzBAo0+sFz9ZYAGT5fB8ilzTW+q6lPocRxrIesMO+aB40V9MgFfbfMXxlGjf22OpRy+IXlvVaQenicdpgbg=="
+  "resolved" "https://registry.npmmirror.com/markdown-to-jsx/-/markdown-to-jsx-7.2.1.tgz"
+  "version" "7.2.1"
+
 "markdown-to-txt@^2.0.1":
   "integrity" "sha512-Hsj7KTN8k1gutlLum3vosHwVZGnv8/cbYKWVkUyo/D1rzOYddbDesILebRfOsaVfjIBJank/AVOySBlHAYqfZw=="
   "resolved" "https://registry.npmmirror.com/markdown-to-txt/-/markdown-to-txt-2.0.1.tgz"
@@ -4799,7 +4804,7 @@
     "unist-util-visit" "^4.0.0"
     "vfile" "^5.0.0"
 
-"react@*", "react@^16.8.0 || ^17 || ^18", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16", "react@>=16.0.0", "react@>=16.11.0", "react@>=16.8.0", "react@>=16.9.0", "react@18.2.0":
+"react@*", "react@^16.8.0 || ^17 || ^18", "react@^18.2.0", "react@>= 0.14.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16", "react@>=16.0.0", "react@>=16.11.0", "react@>=16.8.0", "react@>=16.9.0", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmmirror.com/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

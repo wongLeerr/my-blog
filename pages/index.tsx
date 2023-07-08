@@ -35,7 +35,6 @@ export async function getServerSideProps() {
 const Home = (props: IProps) => {
   
   const { articles } = props
-  console.log("articles:",articles)
 
   return (
     <div className='content-layout'>

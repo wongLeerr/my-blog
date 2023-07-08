@@ -3,7 +3,9 @@ export interface IUserInfo {
     userId: number | null,
     nickname: string,
     introduce: string,
-    avatar:string
+    avatar: string,
+    // 后来为了解决类型报错加的，前端请用userId指明登录者的身份
+    id:number
 }
 
 // 仓库保存用户数据类型
@@ -20,7 +22,9 @@ const userStore = ():IUserStore => {
             userId: -1,
             nickname: '',
             introduce: '',
-            avatar:''
+            avatar: '',
+            // 后来为了解决类型报错加的，前端请用userId指明登录者的身份
+            id:-1
         },
         // 更改用户信息的方法
         setUserInfo: function (value) {

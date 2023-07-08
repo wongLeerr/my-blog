@@ -16,6 +16,7 @@
     "date-fns": "^2.30.0",
     "iron-session": "^6.3.1",
     "js-base64": "^3.7.5",
+    "markdown-to-jsx": "^7.2.1",
     "markdown-to-txt": "^2.0.1",
     "md5": "^2.3.0",
     "mobx": "^6.9.0",

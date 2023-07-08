@@ -4,14 +4,10 @@ import { ironOptions } from 'config/index'
 import { prepareConnection } from 'db/index'
 import { User , Article  } from 'db/entity/index'
 import { ISession } from '..'
-import { Cookie } from 'next-cookie'
-import { setCookie } from 'utils/index'
 import { EXCEPTION_ARTICLE } from '../config/codes'
 
 
 async function publish(req: NextApiRequest, res: NextApiResponse) { 
-
-    console.log("publish执行!!!")
 
     const session: ISession = req.session
     const { title, content } = req?.body
@@ -59,8 +55,6 @@ async function publish(req: NextApiRequest, res: NextApiResponse) {
         res.status(200).json({...EXCEPTION_ARTICLE.PUBLISH_FAILED})
     }
    
-    
-
 }
 
 export default withIronSessionApiRoute(publish, ironOptions)

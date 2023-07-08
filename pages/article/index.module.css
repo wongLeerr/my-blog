@@ -1,0 +1,38 @@
+.editLink {
+  color: #1890ff !important;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.user .info {
+  margin-left: 10px;
+}
+
+.user .info .name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.user .info .date {
+  font-size: 12px;
+  color: #8a919f;
+  display: flex;
+}
+
+.user .info .date div {
+  margin-right: 15px;
+}
+
+.markdown img {
+  width: 100%;
+}

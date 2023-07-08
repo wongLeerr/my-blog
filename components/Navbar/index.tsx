@@ -9,7 +9,7 @@ import { Button, Dropdown, Avatar, message } from 'antd'
 import type { MenuProps } from 'antd';
 import {HomeOutlined,LoginOutlined} from '@ant-design/icons'
 import Login from 'components/Login'
-import { useState } from 'react'
+import { use, useState } from 'react'
 import { useStore } from 'store'
 import request from 'service/fetch'
 import { observer } from 'mobx-react-lite'
@@ -19,8 +19,9 @@ const NavBar: NextPage = () => {
     const store = useStore()
     const { userId, avatar } = store.user.userInfo
     // console.log("userId:",userId)
-    
-    const { pathname , push } = useRouter()
+
+    const router = useRouter()
+    const { pathname , push } = router
     const [isShowLogin,setIsShowLogin] = useState(false)
     
     // 去写文章
@@ -64,7 +65,8 @@ const NavBar: NextPage = () => {
                         userId: -1,
                         introduce: '',
                         avatar: '',
-                        nickname:''
+                        nickname: '',
+                        id:-1
                     })
                     message.success("已退出登录")
                 }
@@ -72,6 +74,11 @@ const NavBar: NextPage = () => {
                 message.error(err || "未知错误")
             }
         )
+    }
+
+    // 点击logo
+    const handleClickLogo = () => {
+        push('/')
     }
 
     // 定义鼠标悬浮头像时弹出的下拉框选项
@@ -94,7 +101,7 @@ const NavBar: NextPage = () => {
         // 总导航区域
         <div className={styles.navbar}>
             {/* logo */}
-            <section className={styles.logoArea}>
+            <section className={styles.logoArea} onClick={handleClickLogo}>
                 <Image title='logo' className={styles.logo} src={logo} alt='logo'></Image>
             </section>
             {/* 首页、咨询、标签导航 */}

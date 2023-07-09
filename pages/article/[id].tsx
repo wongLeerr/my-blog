@@ -10,7 +10,6 @@ import Link from 'next/link'
 import MarkDown from "markdown-to-jsx"
 import { useState } from "react"
 import request from "service/fetch"
-import { userInfo } from "os"
 
 export async function getServerSideProps(ctx: any) {
     
@@ -63,9 +62,9 @@ const ArticleDetail = (props: IProps) => {
     const { user: { userInfo: { userId:loginUserId ,avatar:loginUseravatar,nickname:loginUserNickname} } } = store
     const { article } = props
     const { id: articleId, content, title, update_time, views, user: { avatar, nickname, id: articleUserId } } = article
-    console.log("loginUserId:",loginUserId)
-    console.log("articleUserId:",articleUserId)
-    console.log("articleId:", articleId)
+    // console.log("loginUserId:",loginUserId)
+    // console.log("articleUserId:",articleUserId)
+    // console.log("articleId:", articleId)
     // 评论框内容
     const [inputVal, setInputVal] = useState("") 
     // 使用state代理comments，原因在于方便下面 假数据的展示
@@ -99,7 +98,7 @@ const ArticleDetail = (props: IProps) => {
                         }
                         
                     }
-                ].concat([...comments])
+                ].concat([...comments] as any)
                 // 更新评论区列表数据
                 setComments([...newComments])
                 // 清空评论框内容

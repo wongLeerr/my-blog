@@ -1,7 +1,8 @@
 // 此文件为操纵数据库中users表的文件
-import { Entity, BaseEntity,ManyToOne ,PrimaryGeneratedColumn, JoinColumn ,Column, OneToMany } from 'typeorm'
+import { Entity, BaseEntity,ManyToOne ,PrimaryGeneratedColumn, JoinColumn ,Column, OneToMany, ManyToMany } from 'typeorm'
 import { User } from './users'
 import { Comment } from './comment';
+import { Tag } from './tag';
 
 @Entity({ name: 'articles' })
 
@@ -26,6 +27,11 @@ export class Article extends BaseEntity{
 
     @Column()
     is_delete!: number;
+
+    @ManyToMany(() => Tag, (tag) => tag.articles, {
+        cascade:true
+    })
+    tags!:Tag[]
 
     @ManyToOne(() => User)
     @JoinColumn({ name: 'user_id' })

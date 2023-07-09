@@ -10,7 +10,8 @@ export type IArticle = {
     views: number,
     is_delete: number,
     user: IUserInfo,
-    comments:IComment[]
+    comments: IComment[],
+    tags:[]
 }
 
 export type IComment = {

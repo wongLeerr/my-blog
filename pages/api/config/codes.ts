@@ -1,7 +1,12 @@
 // 此文件用于对API接口文件中返回的成功或者失败的响应状态码和消息做统一化管理
 
 // 用户管理
-export const EXCEPTION_USER = {}
+export const EXCEPTION_USER = {
+    NOT_LOGIN: {
+        code: 1001,
+        msg:'未登录还想做什么~'
+    }
+}
 
 // 文章管理
 export const EXCEPTION_ARTICLE = {
@@ -27,6 +32,17 @@ export const EXCEPTION_COMMENT= {
     },
 }
 
+// 标签管理
+export const EXCEPTION_TAG= {
+    GET_TAG_FAILED: {
+        code: 2001,
+        msg:'获取标签失败'
+    },
+    UPDATE_TAG_FAILED: {
+        code: 2001,
+        msg:'关注/取关失败'
+    }
+}
 
 
 

@@ -24,10 +24,10 @@ async function login(req: NextApiRequest, res: NextApiResponse) {
     const userRepo = db.getRepository(User)
     const userAuthRepo = db.getRepository(UserAuth)
     const result =await userRepo.find()
-    console.log("数据库取到的User表",result)
+    // console.log("数据库取到的User表",result)
     const { phone, verify, identity_type } = req.body
-    console.log("用户输入的手机号:",phone)
-    console.log("用户输入的验证码:",verify)
+    // console.log("用户输入的手机号:",phone)
+    // console.log("用户输入的验证码:",verify)
     // 用户输入的验证码与后台生成的验证码一致
     if (String(session.verifyCode) === String(verify)) {
         // 查user_auths表，查此表中是否有此人记录
@@ -65,7 +65,7 @@ async function login(req: NextApiRequest, res: NextApiResponse) {
                     introduce
                 }
             })
-            console.log("此用户已注册")
+            // console.log("此用户已注册")
         } else {
             // 表明该用户还未注册，完成注册操作（其实就是写入数据库该用户的一些信息）
             // 对用户信息基本表进行写入一些初始化信息

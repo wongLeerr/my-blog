@@ -1,0 +1,106 @@
+.userDetail {
+  width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.userDetail .left {
+  width: 820px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.userDetail .left .userInfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.userDetail .left .userInfo .avatar {
+  margin-right: 50px;
+}
+
+.userDetail .left .userInfo .nickname {
+  font-size: 20px;
+  font-weight: bolder;
+  margin-bottom: 8px;
+}
+
+.userDetail .left .userInfo .desc {
+  color: #72777b;
+  margin-bottom: 5px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.userDetail .left .userInfo .desc svg {
+  width: 12px;
+  height: 12px;
+  margin-right: 10px;
+}
+
+.userDetail .left button {
+  position: absolute;
+  right: 0;
+}
+
+.userDetail .right {
+  width: 240px;
+  height: 180px;
+  background-color: #fff;
+}
+
+.userDetail .right .achievement {
+  height: 180px;
+}
+
+.userDetail .right .achievement .header {
+  height: 50px;
+  border-bottom: 1px solid #f3f3f3;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.userDetail .right .achievement .header svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-top: 2px;
+  color: gold;
+}
+
+.userDetail .right .achievement .number {
+  padding: 20px;
+}
+
+.userDetail .right .achievement .number .wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.userDetail .right .achievement .number .wrapper svg {
+  width: 20px;
+  height: 20px;
+  fill: #89b7f9;
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+.userProfile .profile {
+  width: 450px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+
+.userProfile .form {
+  width: 500px;
+}

@@ -11,12 +11,10 @@ import MarkDown from "markdown-to-jsx"
 import { useState } from "react"
 import request from "service/fetch"
 
-export async function getServerSideProps(ctx: any) {
+export async function getServerSideProps({params}:any) {
     
-    // params 为上游组件传递的路由参数（也可传递query参数）
-    const { params } = ctx
     // 获取文章的id
-    const articleId = params.id
+    const articleId = params?.id
 
     // 创建db连接
     const db = await prepareConnection()
@@ -30,7 +28,7 @@ export async function getServerSideProps(ctx: any) {
         relations:['user','comments','comments.user']
     })
 
-    console.log("articles:",article)
+    // console.log("articles:",article)
 
     // 执行views加一的操作
     if (article) {

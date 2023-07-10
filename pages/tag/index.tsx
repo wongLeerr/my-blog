@@ -26,7 +26,7 @@ interface ITag {
 const Tag = () => {
     // 获取store中保存的用户信息，也就是当前登录的用户的基本信息
     const store = useStore()
-    const { userId } = store.user.userInfo
+    const { userId } = store?.user?.userInfo
     
     // 当前用户关注的tags
     const [followTags, setFollowTags] = useState<ITag[]>()
@@ -38,8 +38,8 @@ const Tag = () => {
     useEffect(() => {
         request.get('/api/tag/get').then((res:any) => {
             if (res.code === 0) {
-                console.log("followTags:", res.data.followTags)
-                console.log("allTags:",res.data.allTags)
+                // console.log("followTags:", res.data.followTags)
+                // console.log("allTags:",res.data.allTags)
                 const { followTags=[], allTags = [] } = res?.data
                 setFollowTags(followTags)
                 setAllTags(allTags)

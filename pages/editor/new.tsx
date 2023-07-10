@@ -31,6 +31,10 @@ const NewEditor = () => {
             if (res.code === 0) {
                 setAllTags(res?.data?.allTags || [])
             }
+        }, (err) => {
+            message.error("在发布文章页获取所有标签时发生了错误~")
+        }).catch((err) => {
+            message.error("在发布文章页获取所有标签时发生了错误~")
         })
     }, [])
     

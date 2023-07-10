@@ -30,11 +30,7 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
         relations: ['users'],
     })
 
-    // console.log("+++++followTags", followTags)
-    // console.log("+++++allTags", allTags)
-    // console.log("++++followTags && allTags",followTags && allTags)
-
-   
+    if (followTags && allTags) {
         // 存入数据库成功
         res.status(200).json({
             code:0,
@@ -44,6 +40,13 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
             },
             msg:'获取标签成功'
         })
+    } else {
+        res.status(200).json({
+            ...EXCEPTION_TAG.GET_TAG_FAILED
+        })
+    }
+
+       
    
 }
 

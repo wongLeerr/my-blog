@@ -19,6 +19,7 @@ const NavBar: NextPage = () => {
     const store = useStore()
     const { userId, avatar } = store.user.userInfo
     // console.log("userId:",userId)
+    console.log("avatar:",avatar)
 
     const router = useRouter()
     const { pathname , push } = router

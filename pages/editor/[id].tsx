@@ -48,10 +48,8 @@ interface IProps {
 }
 
 const ModifyEditor = (props:IProps) => {
-
     // 获取文章信息
-    const { article } = props 
-
+    const article = props?.article
     const ids: any = []
     article.tags.forEach((tag :any) => {
         ids.push(tag?.id)
@@ -74,6 +72,10 @@ const ModifyEditor = (props:IProps) => {
             if (res.code === 0) {
                 setAllTags(res?.data?.allTags || [])
             }
+        }, (err) => {
+            message.error("在更新文章页获取所有标签时出现了错误~")
+        }).catch((err) => {
+            console.log("在更新文章页获取所有标签时出现了错误",err)
         })
     }, [])
 
@@ -111,6 +113,8 @@ const ModifyEditor = (props:IProps) => {
             }
             }, (err) => {
                 message.error(err || "未知错误")
+        }).catch((err) => {
+            console.log("调用更新文章接口时出现了错误",err)
         })
 
     }

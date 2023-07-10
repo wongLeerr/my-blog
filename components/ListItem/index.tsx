@@ -18,7 +18,7 @@ const ListItem = (props: IProps) => {
     const { user } = article
 
     // 每一篇文章应为一个可点击并且要跳转的Link
-    return <Link href={`/article/${article.id}`}>
+    return <Link href={`/article/${article?.id}`}>
         <div className={styles.container}>
             <div className={styles.article}>
                 {/* 用户信息（发表文章的用户名、文章更新时间等） */}

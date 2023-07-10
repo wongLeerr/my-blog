@@ -4,7 +4,15 @@
 export const EXCEPTION_USER = {
     NOT_LOGIN: {
         code: 1001,
-        msg:'未登录还想做什么~'
+        msg:'未登录还想做什么'
+    },
+    NOT_FOUND: {
+        code: 1001,
+        msg:'未找到此用户'
+    },
+    MODIFY_ERROR: {
+        code: 1001,
+        msg:'修改信息失败'
     }
 }
 

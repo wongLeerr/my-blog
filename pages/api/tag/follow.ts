@@ -48,7 +48,7 @@ async function get(req: NextApiRequest, res: NextApiResponse) {
             // 表明要取关 （在tag.users表中干掉当前登录用户信息即可）
             tag.users = tag.users.filter(user => user.id !== userId)
             tag.follow_count -= 1
-            console.log(tag)
+            // console.log(tag)
         }
     }
 

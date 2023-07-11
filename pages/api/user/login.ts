@@ -21,9 +21,9 @@ async function login(req: NextApiRequest, res: NextApiResponse) {
     // 获取数据库对象，可进行相应数据库的操作
     const db = await prepareConnection()
     // 获取User表和UserAuth表的操作对象
-    const userRepo = db.getRepository(User)
+    // const userRepo = db.getRepository(User)
     const userAuthRepo = db.getRepository(UserAuth)
-    const result =await userRepo.find()
+    // const result =await userRepo.find()
     // console.log("数据库取到的User表",result)
     const { phone, verify, identity_type } = req.body
     // console.log("用户输入的手机号:",phone)

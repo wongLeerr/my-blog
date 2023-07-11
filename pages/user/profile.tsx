@@ -48,7 +48,9 @@ const UserProfile = () => {
             } else {
                 message.error("修改失败！")
             }
-        }).catch((err) => {})
+        }).catch((err) => {
+            console.log(err)
+        })
     }
 
     return (<div className='content-layout'>

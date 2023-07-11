@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { withIronSessionApiRoute } from 'iron-session/next'
 import { ironOptions } from 'config/index'
 import { prepareConnection } from 'db/index'
-import { Article ,Tag } from 'db/entity/index'
+import { Article } from 'db/entity/index'
 import { EXCEPTION_ARTICLE } from '../config/codes'
 
 

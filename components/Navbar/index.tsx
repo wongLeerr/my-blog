@@ -9,7 +9,7 @@ import { Button, Dropdown, Avatar, message } from 'antd'
 import type { MenuProps } from 'antd';
 import {HomeOutlined,LoginOutlined} from '@ant-design/icons'
 import Login from 'components/Login'
-import { use, useState } from 'react'
+import {  useState } from 'react'
 import { useStore } from 'store'
 import request from 'service/fetch'
 import { observer } from 'mobx-react-lite'

@@ -7,6 +7,10 @@
     padding: 10px;
     cursor: pointer;
 
+    &:hover {
+        background-color: #f2f3f5;
+    }
+
     h3 {
         font-weight: bold !important;
     }

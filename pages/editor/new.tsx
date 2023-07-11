@@ -32,9 +32,9 @@ const NewEditor = () => {
                 setAllTags(res?.data?.allTags || [])
             }
         }, (err) => {
-            message.error("在发布文章页获取所有标签时发生了错误~")
+            message.error("在发布文章页获取所有标签时发生了错误~",err)
         }).catch((err) => {
-            message.error("在发布文章页获取所有标签时发生了错误~")
+            message.error("在发布文章页获取所有标签时发生了错误~",err)
         })
     }, [])
     

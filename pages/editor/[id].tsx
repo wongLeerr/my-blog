@@ -7,7 +7,6 @@ import { Input , Button , message ,Select} from 'antd'
 import styles from './index.module.scss'
 import request from 'service/fetch';
 import { observer } from 'mobx-react-lite'
-import { useStore } from 'store'
 import { useRouter } from 'next/router'
 import { prepareConnection } from 'db';
 import { Article } from 'db/entity'; 
@@ -65,6 +64,7 @@ const ModifyEditor = (props:IProps) => {
      const [allTags, setAllTags] = useState([])
      // 选中的下拉框中的标签
     const [tagIds, setTagIds] = useState([])
+    console.log("editor/[id]tagIds:",tagIds)
     
     // 获取所有标签
     useEffect(() => {
@@ -73,7 +73,7 @@ const ModifyEditor = (props:IProps) => {
                 setAllTags(res?.data?.allTags || [])
             }
         }, (err) => {
-            message.error("在更新文章页获取所有标签时出现了错误~")
+            message.error("在更新文章页获取所有标签时出现了错误~",err)
         }).catch((err) => {
             console.log("在更新文章页获取所有标签时出现了错误",err)
         })
@@ -83,9 +83,9 @@ const ModifyEditor = (props:IProps) => {
     const [content, setContent] = useState(`${article.content}`)
     
     // 创建 store
-    const store = useStore()
-    // 获取userId
-    const {userId} = store.user.userInfo 
+    // const store = useStore()
+    // // 获取userId
+    // const { userId } = store.user.userInfo 
 
     // 发布
     const handleUpdate = () => {

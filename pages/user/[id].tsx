@@ -10,6 +10,55 @@ import Link from 'next/link'
 import ListItem from "components/ListItem";
 
 
+
+
+// SSG
+
+// export async function getStaticPaths() {
+
+//     // 列举所有需要动态生成的页面路径（这是个人主页也就是穷举数据库中所有用户的个人主页）
+//     const db = await prepareConnection()
+//     const userRepo = db.getRepository(User)
+//     const users = await userRepo.find()
+//     const userIds = users?.map(user => ({ params: { id: String(user.id) } }))
+
+//     return {
+//         paths: userIds,
+//         fallback:'blocking'
+//     }
+// }
+
+// export async function getStaticProps({ params }: any) {
+//         // id 为 userId
+//     const userId= params?.id
+//     const db = await prepareConnection()
+
+//     const userRepo = db.getRepository(User)
+//     const articleRepo = db.getRepository(Article)
+//     const user = await userRepo.findOne({
+//         where:{
+//             id:Number(userId)
+//         }
+//     })
+//     const articles = await articleRepo.find({
+//         where: {
+//             user: {
+//                 id:Number(userId)
+//             }
+//         },
+//         relations: ['user','tags']
+//     })
+
+
+//     return {
+//         props: {
+//             userInfo: JSON.parse(JSON.stringify(user)),
+//             articles: JSON.parse(JSON.stringify(articles))
+//         }
+//     }
+// }
+
+// SSR
 export async function getServerSideProps({params}:any) {
     // id 为 userId
     const userId= params?.id

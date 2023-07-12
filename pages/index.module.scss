@@ -22,4 +22,36 @@
       color: #fff;
     }
   }
+
+
+  .page404Container {
+    display: flex;
+    height: 600px;
+    background-color: #fff;
+    .left {
+      margin-top: 200px;
+      margin-left: 350px;
+      width: 400px;
+      .title {
+        font-size:25px;
+        font-weight: bold;
+      }
+      .errCode {
+        font-size: 20px;
+      }
+      .navigator {
+        margin-top: 20px;
+        font-size: 20px;
+      }
+
+    }
+
+    .right {
+      width: 400px;
+      margin-left: 50px;
+      img {
+        margin-top: 80px;
+      }
+    }
+  }
   

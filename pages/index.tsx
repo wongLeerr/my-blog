@@ -1,12 +1,14 @@
 // 引入数据库（因为我们要获取文章）
 import { prepareConnection } from 'db/index'
 import { Article ,Tag} from 'db/entity'
-import ListItem from 'components/ListItem'
 import { IArticle } from './api'
 import { Divider } from 'antd'
 import styles from './index.module.scss'
 import { useState } from 'react'
 import classnames from 'classnames';
+import dynamic from 'next/dynamic'
+// Dynamic import 方法导入ListItem组件，实现该组件的按需加载
+const ListItem = dynamic(() => import('components/ListItem') )
 
 interface ITag {
   id: number;

@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import  Head  from 'next/head'
 import Layout from 'components/Layout'
+import ErrorBoundary from 'components/ErrorBoundary'
 import { StoreProvider } from 'store'
 import { NextPage } from 'next'
 
@@ -16,20 +17,24 @@ const MyApp = ({ initialValue, Component, pageProps }: IProps) => {
   const renderLayout = () => {
     if ((Component as any).layout === null) {
       return (
-        <div>
+        <ErrorBoundary>
           <Head>
           <title>博客系统</title>
           </Head>
           <Component {...pageProps} />
-        </div>
+        </ErrorBoundary>
       )
     } else {
-      return (<Layout>
+      return (
+        <ErrorBoundary>
+          <Layout>
         <Head>
           <title>博客系统</title>
         </Head>
           <Component {...pageProps} />
-        </Layout>)
+        </Layout>
+        </ErrorBoundary>
+        )
     }
   }
 

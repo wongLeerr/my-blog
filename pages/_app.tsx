@@ -11,6 +11,11 @@ interface IProps {
   pageProps:any
 }
 
+// 衡量页面指标的数据
+export function reportWebVitals(metric: any) {
+      console.log(metric)
+}
+
 const MyApp = ({ initialValue, Component, pageProps }: IProps) => {
   
   // 根据要渲染的组件身上的layout属性是否为null，来决定是否渲染layout，也就是页头和页脚

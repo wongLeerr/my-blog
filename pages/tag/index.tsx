@@ -51,34 +51,44 @@ const Tag = () => {
     
     // 当用户点击已关注按钮的时候(已经关注了，再点击那就是不再关注了)
     const handleUnFollow = (tagId: number) => {
-        request.post('/api/tag/follow', {
-            // type为follow表明为关注，unFollow表明为取关
-            type: 'unfollow',
-            tagId
-        }).then((res:any) => {
-            if (res.code === 0) {
-                message.success("已取消关注")
-                setNeedRefresh(!needRefresh)
-            }
-        }, err => {
-            message.error("取消关注标签时服务器出现了问题...",err)
-        })
+        if (!userId || userId == -1) {
+            message.warning("不登录还想操作标签撒~")
+        } else {
+            request.post('/api/tag/follow', {
+                // type为follow表明为关注，unFollow表明为取关
+                type: 'unfollow',
+                tagId
+            }).then((res:any) => {
+                if (res.code === 0) {
+                    message.success("已取消关注")
+                    setNeedRefresh(!needRefresh)
+                }
+            }, err => {
+                message.error("取消关注标签时服务器出现了问题...",err)
+            })
+        }
+       
     }
 
     // 当用户点击关注此标签时，表明用户还未关注此标签
     const handleGoFollow = (tagId: number) => {
-        request.post('/api/tag/follow', {
-            // type为follow表明为关注，unfollow表明为取关
-            type: 'follow',
-            tagId
-        }).then((res:any) => {
-            if (res.code === 0) {
-                message.success("已关注")
-                setNeedRefresh(!needRefresh)
-            }
-        }, err => {
-            message.error("关注标签时服务器出现了问题...",err)
-        })
+        if (!userId || userId == -1) {
+            message.warning("不登录还想操作标签撒~")
+        } else {
+            request.post('/api/tag/follow', {
+                // type为follow表明为关注，unfollow表明为取关
+                type: 'follow',
+                tagId
+            }).then((res:any) => {
+                if (res.code === 0) {
+                    message.success("已关注")
+                    setNeedRefresh(!needRefresh)
+                }
+            }, err => {
+                message.error("关注标签时服务器出现了问题...",err)
+            })
+        }
+        
     }
 
     return (

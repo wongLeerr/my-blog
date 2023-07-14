@@ -4,7 +4,7 @@ import styles from './index.module.scss'
 const Footer:NextPage = () => {
     return (
         <div className={styles.footer}>
-            Next.js + SSR 服务端渲染博客系统解决方案
+            Next.js + SSR 服务端渲染博客系统全栈解决方案
         </div>
     )
     

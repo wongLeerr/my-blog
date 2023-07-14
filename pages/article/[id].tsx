@@ -114,73 +114,80 @@ const ArticleDetail = (props: IProps) => {
 
     return (
         <div>
-            <div className='content-layout'>
-            <h2 className={styles.title}>{title}</h2>
-            <div className={styles.user}>
-                <Avatar src={avatar} size={50} />
-                <div className={styles.info}>
-                    <div className={styles.name}>{nickname}</div>
-                    <div className={styles.date}>
-                        <div>{format(new Date(update_time),'yyyy-MM-dd hh:mm:ss')}</div>
-                        <div>阅读量 {views}</div>
-                        {
-                            Number(loginUserId) === Number(articleUserId) &&  <Link href={`/editor/${articleId}`} className={styles.editLink}>编辑此文章</Link>
-                        } 
+            {articleId ?
+                <div>
+                    <div className='content-layout'>
+                        <h2 className={styles.title}>{title}</h2>
+                        <div className={styles.user}>
+                            <Avatar src={avatar} size={50} />
+                            <div className={styles.info}>
+                                <div className={styles.name}>{nickname}</div>
+                                <div className={styles.date}>
+                                    <div>{format(new Date(update_time), 'yyyy-MM-dd hh:mm:ss')}</div>
+                                    <div>阅读量 {views}</div>
+                                    {
+                                        Number(loginUserId) === Number(articleUserId) && <Link href={`/editor/${articleId}`} className={styles.editLink}>编辑此文章</Link>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        {/* 以markdown的格式渲染文章 */}
+                        <MarkDown className={styles.markdown}>
+                            {content}
+                        </ MarkDown>
                     </div>
-                </div>
-            </div>
-            {/* 以markdown的格式渲染文章 */}
-            <MarkDown className={styles.markdown}>
-                {content}
-            </ MarkDown>
-            </div>
-            <section className={styles.devider}></section>
-            <main className='content-layout'>
-                <div className={styles.comment}>
-                    <h4 className={styles.commentTitle}>评论</h4>
-                    {/* 只有登录的用户才能看到输入框 */}
-                    {
-                        (!loginUserId || loginUserId == -1) ?
-                            // 未登录状态要展示的
-                            null :
-                            // 已登录状态要展示的
-                            <section className={styles.enter}>
-                                <Avatar src={avatar} size={40} className={styles.avatar}></Avatar>
-                                <div className={styles.content}>
-                                    <Input.TextArea placeholder="请输入评论" rows={3} value={inputVal} onChange={handleInputValChange} className={styles.input} />
-                                    <Button type="primary" onClick={ handleComment }>发表评论</Button>
-                                </div>
-                            </section>    
-                    }
-                </div>
-                <Divider />
-                <section className={styles.display}>
-                    {
-                        comments?.map((comment:any) => {
-                            return (
-                                <div className={styles.wrapper} key={comment.id}>
-                                    <Avatar src={comment?.user?.avatar} size={40} />
-                                    <div className={styles.info}>
-                                        <div className={styles.name}>
-                                            <div> {comment?.user?.nickname} </div>
-                                            <div className={styles.date}>
-                                                {
-                                                    format(new Date(comment.update_time),'yyyy-MM-dd hh:mm:ss')
-                                                }
-                                            </div>
-                                    </div>
+                    <section className={styles.devider}></section>
+                    <main className='content-layout'>
+                        <div className={styles.comment}>
+                            <h4 className={styles.commentTitle}>评论</h4>
+                            {/* 只有登录的用户才能看到输入框 */}
+                            {
+                                (!loginUserId || loginUserId == -1) ?
+                                    // 未登录状态要展示的
+                                    null :
+                                    // 已登录状态要展示的
+                                    <section className={styles.enter}>
+                                        <Avatar src={avatar} size={40} className={styles.avatar}></Avatar>
                                         <div className={styles.content}>
-                                            { comment?.content }
+                                            <Input.TextArea placeholder="请输入评论" rows={3} value={inputVal} onChange={handleInputValChange} className={styles.input} />
+                                            <Button type="primary" onClick={handleComment}>发表评论</Button>
                                         </div>
-                                    </div>
-                                </div>
-                            )
+                                    </section>
+                            }
+                        </div>
+                        <Divider />
+                        <section className={styles.display}>
+                            {
+                                comments?.map((comment: any) => {
+                                    return (
+                                        <div className={styles.wrapper} key={comment.id}>
+                                            <Avatar src={comment?.user?.avatar} size={40} />
+                                            <div className={styles.info}>
+                                                <div className={styles.name}>
+                                                    <div> {comment?.user?.nickname} </div>
+                                                    <div className={styles.date}>
+                                                        {
+                                                            format(new Date(comment.update_time), 'yyyy-MM-dd hh:mm:ss')
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div className={styles.content}>
+                                                    {comment?.content}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
                             
-                       })
-                    }
-                </section>
-            </main>
-        </div>)
+                                })
+                            }
+                        </section>
+                    </main>
+                </div>
+                :
+                <div>loading.............................</div>
+            }
+        </div>
+        )
    
 }
 

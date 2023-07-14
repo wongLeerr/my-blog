@@ -1,0 +1,20 @@
+.container .title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.container .introduce {
+  margin-bottom: 10px;
+}
+
+.container .techStack .nextJs {
+  font-weight: bold;
+}
+
+.container .techStack .react {
+  font-weight: bold;
+}
+
+.container .url {
+  font-weight: bold;
+}

@@ -115,26 +115,32 @@ const Tag = () => {
                         label: `全部标签`,
                         key: 'all',
                         children: (
-                            <div className={styles.tags}>
+                            <div>
                                 {
-                                    allTags?.map((tag:any) => {
-                                        return (
-                                            <div key={tag?.title} className={styles.tagWrapper}>
-                                                <div>{( ANTD_ICONS  as any)[tag?.icon]?.render()}</div>
-                                                <div className={styles.title}>{tag?.title}</div>
-                                                <div className={styles.operate}>{tag?.follow_count} 关注 {tag?.article_count} 文章</div>
-                                                {
-                                                    tag?.users?.find((user: any) => Number(user.id) === Number(userId)) 
-                                                        ?
-                                                        (<Button type="primary"  onClick={() => handleUnFollow(tag?.id)} >已关注此标签</Button>)
-                                                        :
-                                                        (<Button  onClick={() => handleGoFollow(tag?.id)}>关注此标签</Button>)
-                                                }
-                                            </div>
-                                        )
-                                    })
+                                    allTags?.length === 0 ? <div>loading...</div> :
+                                    <div className={styles.tags}>
+                                    {
+                                        allTags?.map((tag:any) => {
+                                            return (
+                                                <div key={tag?.title} className={styles.tagWrapper}>
+                                                    <div>{( ANTD_ICONS  as any)[tag?.icon]?.render()}</div>
+                                                    <div className={styles.title}>{tag?.title}</div>
+                                                    <div className={styles.operate}>{tag?.follow_count} 关注 {tag?.article_count} 文章</div>
+                                                    {
+                                                        tag?.users?.find((user: any) => Number(user.id) === Number(userId)) 
+                                                            ?
+                                                            (<Button type="primary"  onClick={() => handleUnFollow(tag?.id)} >已关注此标签</Button>)
+                                                            :
+                                                            (<Button  onClick={() => handleGoFollow(tag?.id)}>关注此标签</Button>)
+                                                    }
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
                                 }
                             </div>
+                            
                         )
                     }
                 ]}

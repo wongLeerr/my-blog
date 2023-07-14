@@ -8,7 +8,9 @@ import { useState } from 'react'
 import classnames from 'classnames';
 import dynamic from 'next/dynamic'
 // Dynamic import 方法导入ListItem组件，实现该组件的按需加载
-const ListItem = dynamic(() => import('components/ListItem') )
+const ListItem = dynamic(() => import('components/ListItem'), {
+  loading: () => <p>Loading...</p>,
+} )
 
 interface ITag {
   id: number;

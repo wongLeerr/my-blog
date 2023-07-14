@@ -1,0 +1,37 @@
+.container {
+    height: 500px;
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .introduce {
+        margin-bottom: 10px;
+    }
+    .link {
+                 
+        color:#007fff !important;
+    }
+    .middle {
+        .csdn {
+          .innerCSDN {
+            font-size: 16px;
+            font-weight:bold;
+          }
+        }
+        .github {
+            margin-bottom: 15px;
+            .innnerIcon {
+                font-size: 16px;
+                font-weight:bold;
+            }
+        }
+    }
+    .bottom {
+            .wechat {
+                font-weight: bold;
+            }
+            .emailInfo {
+                font-weight: bold;
+            }
+    }
+}

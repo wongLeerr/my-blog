@@ -47,6 +47,15 @@ axios是一个同构库，即既支持node服务端也支持浏览器客户端�
         - 在拿到统计数据（如页面加载需要多少时间等性能数据，少量数据）后通常使用navigator.sendBeacon方法（如果没有此方法，则用fetch方法）发送数据给服务器  ，而不使用XHR这种请求方式，原因在于使用 sendBeacon() 方法会使用户代理在有机会时异步地向服务器发送数据，同时不会延迟页面的卸载或影响下一导航的载入性能。（恰到好处的发请求）
         - navigator.sendBeacon() 方法可用于通过 HTTP POST 将少量数据 异步 传输到 Web 服务器。
         它主要用于将统计数据发送到 Web 服务器，同时避免了用传统技术（如：XMLHttpRequest）发送分析数据的一些问题。
-22.
+22.基于 OAuth2.0 实现第三方登录
+步骤:在github中给三方应用备案(https://github.com/settings/applications/new),填写三方应用相关信息,填写回跳地址（api路由，也就是要跳到的后端路由:http://localhost/api/oauth/redirect） -> github帮我们生成一个clientID和client secrets  -> 前端页面点击使用github登录（新开一个页面跳转至github授权页，需携带github为我们生成好的clientID(表明三方应用的身份)以及携带回调url） -> 跳转至github给我们约定好的页面 -> 进行授权，如果点击同意授权 -> 则会 回跳至我们指定的url地址，就是api/redirect后端地址，其实就是访问这个文件了 -> 在这个文件中我们拿到github给我们生成的code(授权码) -> 随后后端拿着code 和 clientID和clientsecret向服务器请求获取access_token -> 后端拿着access_token向github发起请求访问用户信息 -> github把用户信息交给后端 -> 后端再交给前端  
+倘若不适用OAuth2.0协议实现三方登录流程(传统方式): 
+用户向三方应用发起访问，要获取存储在服务商端的相册图片 -> 第三方应用要求用户提供服务商端的账号密码 -> 账号密码正确第三方应用使用服务商端提供的资源
+存在问题：
+1.用户账号、密码信息透露给了第三方应用，导致安全问题
+2.用户要回收授权，只能通过修改密码来实现，此时如果有多个第三方应该，所有授权一起被回收
+3.很难安全的实现对不同的第三方应用给予不用的权限
+
+
 
 

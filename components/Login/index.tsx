@@ -71,9 +71,15 @@ const Login = ({ isShow, onClose }: IProps) => {
             message.error(error)
         })
      }
-    
+    // client-id : 0545ab062874714f889d
+    // client-secret : 95f9850b23539b74a507bb1694955badf0f11832
     // github 登录 (基于OAuth2.0协议)
-    const handleOtherLogin = () => { }
+    const handleOtherLogin = () => {
+        const githubClientId = '0545ab062874714f889d'
+        const redirectUrl = 'http://localhost:3000/api/oauth/redirect'
+        // 新开一个页面，跳转至 github 以决定是否将github登录权限授予给当前网站，同意授权或者不同意授权都将跳转至我们指定的地址
+        window.open(`https://github.com/login/oauth/authorize?client_id=${githubClientId}&redirect_uri=${redirectUrl}`)
+     }
     
     // 输入手机号
     const handleFormChange = (e:any) => {
